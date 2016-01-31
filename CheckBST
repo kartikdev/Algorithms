@@ -1,0 +1,47 @@
+
+public class TreeNode {
+
+    public int value;
+    public TreeNode left;
+    public TreeNode right;
+}
+
+public class CheckBST {
+
+    public void checkBST(TreeNode root){
+        if(null == root){
+            System.out.println("Invalid entry");
+        }
+        if(isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE)){
+            System.out.println("Its a BST");
+        }
+        System.out.println("Its not a BST");
+    }
+
+    private boolean isBST(TreeNode node,int min,int max){
+
+        if(null == node){
+            return true;
+        }
+
+        TreeNode left = node.left;
+        TreeNode right = node.right;
+        int val = node.value;
+
+        if(val < min || val > max){
+            return false;
+        }
+
+        if(null == left && null == right){
+            return true;
+        }
+
+        int leftVal = left.value;
+        int rightVal = right.value;
+
+        if(isBST(left,min,val) && isBST(right,val,max) && val < rightVal && val > leftVal){
+            return true;
+        }
+        return false;
+    }
+}
