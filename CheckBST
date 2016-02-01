@@ -36,12 +36,20 @@ public class CheckBST {
             return true;
         }
 
-        int leftVal = left.value;
-        int rightVal = right.value;
-
-        if(isBST(left,min,val) && isBST(right,val,max) && val < rightVal && val > leftVal){
-            return true;
+        if(null != left){
+            int leftVal = left.value;
+            if(! isBST(left,min,val) || val < leftVal){
+                return false;
+            }
         }
-        return false;
+        if(null != right){
+
+            int rightVal = right.value;
+            if(! isBST(right,val,max) || val > rightVal){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
