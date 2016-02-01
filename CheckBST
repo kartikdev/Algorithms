@@ -32,10 +32,6 @@ public class CheckBST {
             return false;
         }
 
-        if(null == left && null == right){
-            return true;
-        }
-
         if(null != left){
             int leftVal = left.value;
             if(! isBST(left,min,val) || val < leftVal){
